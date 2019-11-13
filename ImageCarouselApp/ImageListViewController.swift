@@ -17,7 +17,7 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     var searchString = "" {
         didSet {
             self.setData()
-            self.collectionView.reloadData()
+            self.reloadData(onlyItems: true)
         }
     }
     
@@ -180,7 +180,7 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
             if self.searchString != "" {
                 self.searchString = ""
             }
-            self.collectionView.reloadData()
+            self.reloadData()
         }
     }
     
@@ -201,6 +201,16 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func searchTextChanged(text: String) {
         self.searchString = text
+    }
+    
+    func reloadData(onlyItems: Bool = false) {
+        DispatchQueue.main.async {
+            if onlyItems {
+                self.collectionView.reloadSections([1])
+            } else {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
 }
