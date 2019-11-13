@@ -16,8 +16,9 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     var currentImage = 0
     var searchString = "" {
         didSet {
+            let oldData = self.data[currentImage].items
             self.setData()
-            self.reloadData(onlyItems: true)
+            self.reloadData(onlyItems: true, oldData: oldData)
         }
     }
     
@@ -139,7 +140,7 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
         
         var items: [ItemModel] = []
         for i in 0...12 {
-            let itemModel = ItemModel(name: "Item \(i)", imageUrl: "https://picsum.photos/200/300?random=1")
+            let itemModel = ItemModel(id: i, name: "Item \(i)", imageUrl: "https://picsum.photos/200/300?random=1")
             items.append(itemModel)
         }
         
@@ -157,7 +158,7 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
         
         var items2: [ItemModel] = []
         for i in 0...3 {
-            let itemModel = ItemModel(name: "Item \(i)", imageUrl: "https://picsum.photos/200/300?random=1")
+            let itemModel = ItemModel(id: i, name: "Item \(i)", imageUrl: "https://picsum.photos/200/300?random=1")
             items2.append(itemModel)
         }
         
@@ -203,14 +204,39 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
         self.searchString = text
     }
     
-    func reloadData(onlyItems: Bool = false) {
-        DispatchQueue.main.async {
-            if onlyItems {
-                self.collectionView.reloadSections([1])
-            } else {
-                self.collectionView.reloadData()
-            }
+    func reloadData(onlyItems: Bool = false, oldData: [ItemModel]? = nil) {
+        if onlyItems {
+//            self.collectionView.reloadItems(inSection: 0)
+            diffForSection(section: 1, oldData: oldData!, newData: self.data[currentImage].items)
+        } else {
+            self.collectionView.reloadData()
         }
+    }
+    
+    func diffForSection(section: Int, oldData: [ItemModel], newData: [ItemModel]) {
+        
+        var indexesToDelete: [IndexPath] = []
+        var indexesToInsert: [IndexPath] = []
+        
+        var count = 0
+        for _ in oldData {
+            indexesToDelete.append(IndexPath(row: count, section: section))
+            count += 1
+        }
+        
+        var insertCount = 0
+        for _ in newData {
+            indexesToInsert.append(IndexPath(row: insertCount, section: section))
+            insertCount += 1
+        }
+        
+        
+        self.collectionView.performBatchUpdates({
+            self.collectionView.deleteItems(at: indexesToDelete)
+            self.collectionView.insertItems(at: indexesToInsert)
+        }, completion: { success in
+            self.collectionView.reloadItems(inSection: 1)
+        })
     }
     
 }

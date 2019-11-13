@@ -8,12 +8,24 @@
 
 import Foundation
 
-struct ItemModel {
+struct ItemModel: Hashable {
+    var id: Int
     var name: String
     var imageUrl: String
     
-    init(name: String, imageUrl: String) {
+    init(id: Int, name: String, imageUrl: String) {
+        self.id = id
         self.name = name
         self.imageUrl = imageUrl
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(name)
+        hasher.combine(imageUrl)
+    }
+    
+    static func == (lhs: ItemModel, rhs: ItemModel) -> Bool {
+        return lhs.id == rhs.id
     }
 }

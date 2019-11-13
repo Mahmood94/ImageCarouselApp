@@ -27,6 +27,7 @@
 		F044603A237BFBC900799A4F /* SearchbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0446039237BFBC900799A4F /* SearchbarDelegate.swift */; };
 		F044603D237C550A00799A4F /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F044603C237C550A00799A4F /* SearchBarView.swift */; };
 		F044603F237C559400799A4F /* SearchBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F044603E237C559400799A4F /* SearchBarView.xib */; };
+		F0446041237C5C2400799A4F /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0446040237C5C2400799A4F /* UICollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		F0446039237BFBC900799A4F /* SearchbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchbarDelegate.swift; sourceTree = "<group>"; };
 		F044603C237C550A00799A4F /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		F044603E237C559400799A4F /* SearchBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarView.xib; sourceTree = "<group>"; };
+		F0446040237C5C2400799A4F /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				F0446033237BF07500799A4F /* UIImageView.swift */,
+				F0446040237C5C2400799A4F /* UICollectionView.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				F044602C237BE44000799A4F /* CarouselViewCell.swift in Sources */,
 				F044600E237BD77E00799A4F /* ImageListViewController.swift in Sources */,
 				F044603A237BFBC900799A4F /* SearchbarDelegate.swift in Sources */,
+				F0446041237C5C2400799A4F /* UICollectionView.swift in Sources */,
 				F0446027237BDED000799A4F /* ListItemViewCell.swift in Sources */,
 				F0446030237BE88800799A4F /* ItemModel.swift in Sources */,
 				F0446038237BF40B00799A4F /* ImageCarouselDelegate.swift in Sources */,
