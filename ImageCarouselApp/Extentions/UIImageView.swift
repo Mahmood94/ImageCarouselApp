@@ -10,10 +10,23 @@ import UIKit
 
 extension UIImageView {
     func loadImage(fromUrl: String) {
-        
-        let url = NSURL(string: fromUrl)! as URL
-        if let imageData: NSData = NSData(contentsOf: url) {
-            self.image = UIImage(data: imageData as Data)
+        if let url = URL(string: fromUrl) {
+            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                
+                if error != nil {
+                    print("Error loading image...")
+                    print(error)
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    if let data = data {
+                        if let image = UIImage(data: data) {
+                            self.image = image
+                        }
+                    }
+                }
+            }).resume()
         }
     }
 }
