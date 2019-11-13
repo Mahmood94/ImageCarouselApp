@@ -25,5 +25,10 @@ class SearchBarCell: UICollectionViewCell, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.delegate?.searchTextChanged(text: self.searchBar.text!)
+    }
+    
 }
 

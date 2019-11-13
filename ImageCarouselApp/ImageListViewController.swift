@@ -16,11 +16,8 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     var currentImage = 0
     var searchString = "" {
         didSet {
-            if !self.searchString.isEmpty {
-                let oldData = self.data[currentImage].items
-                self.setData()
-                self.reloadData(onlyItems: true, oldData: oldData)
-            }
+            self.setData()
+            self.reloadData(onlyItems: true)
         }
     }
     
@@ -34,16 +31,17 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
         self.collectionView.register(UINib(nibName: "SearchBarCell", bundle: nil), forCellWithReuseIdentifier: "SearchBarCell")
         
         self.collectionView.register(UINib(nibName: "SearchBarView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchBarView")
-        
-        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
-        layout?.sectionHeadersPinToVisibleBounds = true
+
+        // Attempt on sticky header
+//        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+//        layout?.sectionHeadersPinToVisibleBounds = true
         
         self.setData()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView == self.collectionView {
-            return 2
+            return 3
         } else {
             return 1
         }
@@ -53,6 +51,8 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionView {
             if section == 0 {
+                return 1
+            } else if section == 1 {
                 return 1
             } else {
                 return data[currentImage].items.count
@@ -77,6 +77,11 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
                 cell.collectionView.dataSource = self
                 cell.setup()
                 return cell
+            } else if indexPath.section == 1 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchBarCell", for: indexPath) as! SearchBarCell
+                cell.delegate = self
+                cell.setup()
+                return cell
             } else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListItemViewCell", for: indexPath) as! ListItemViewCell
                 let itemCount = indexPath.row
@@ -96,7 +101,6 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
         
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         if collectionView == self.collectionView {
@@ -105,34 +109,35 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
             } else {
                 return CGSize(width: self.view.frame.width, height: 45.0)
             }
-            
+
         } else {
             return CGSize(width: self.view.frame.width * 0.9, height: 250.0)
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-            
-        case UICollectionView.elementKindSectionHeader:
-            let headerSearchView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchBarView", for: indexPath) as! SearchBarView
-            
-            headerSearchView.delegate = self
-            headerSearchView.searchBar.delegate = headerSearchView
-            
-            return headerSearchView
-        default:
-            fatalError("This case is not handled")
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 1 {
-            return CGSize(width: self.view.frame.width, height: 45.0)
-        } else {
-            return CGSize.zero
-        }
-    }
+
+    // Attempt on sticky search bar
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        switch kind {
+//
+//        case UICollectionView.elementKindSectionHeader:
+//            let headerSearchView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchBarView", for: indexPath) as! SearchBarView
+//
+//            headerSearchView.delegate = self
+//            headerSearchView.searchBar.delegate = headerSearchView
+//
+//            return headerSearchView
+//        default:
+//            fatalError("This case is not handled")
+//        }
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        if section == 1 {
+//            return CGSize(width: self.view.frame.width, height: 45.0)
+//        } else {
+//            return CGSize.zero
+//        }
+//    }
 
     
     func setData() {
@@ -141,14 +146,14 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
         var imageModel1 = ImageModel(imageUrl: "https://picsum.photos/seed/image1/500/700")
         
         var items: [ItemModel] = []
-        for i in 0...12 {
+        for i in 0...18 {
             let itemModel = ItemModel(id: i, name: "Item \(i)", imageUrl: "https://picsum.photos/seed/item\(i)/200/300")
             items.append(itemModel)
         }
         
         if !searchString.isEmpty {
             items = items.filter({
-                $0.name.starts(with: self.searchString)
+                self.checkWithSearchString(string: $0.name)
             })
         }
         
@@ -166,7 +171,7 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
         
         if !searchString.isEmpty {
             items2 = items2.filter({
-                $0.name.starts(with: self.searchString)
+                self.checkWithSearchString(string: $0.name)
             })
         }
         
@@ -203,15 +208,21 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
         self.searchString = text
     }
     
+    func checkWithSearchString(string: String) -> Bool {
+        return string.lowercased().contains(self.searchString.lowercased())
+    }
+    
     func reloadData(onlyItems: Bool = false, oldData: [ItemModel]? = nil) {
         if onlyItems {
-//            self.collectionView.reloadItems(inSection: 0)
-            diffForSection(section: 1, oldData: oldData!, newData: self.data[currentImage].items)
+            self.collectionView.reloadSections([2])
+            // Attempt on diffing
+//            diffForSection(section: 1, oldData: oldData!, newData: self.data[currentImage].items)
         } else {
             self.collectionView.reloadData()
         }
     }
     
+    // Attempt on diffing
     func diffForSection(section: Int, oldData: [ItemModel], newData: [ItemModel]) {
         
         var indexesToDelete: [IndexPath] = []
