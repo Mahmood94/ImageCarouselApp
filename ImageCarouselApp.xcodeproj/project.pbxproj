@@ -25,6 +25,8 @@
 		F0446034237BF07500799A4F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0446033237BF07500799A4F /* UIImageView.swift */; };
 		F0446038237BF40B00799A4F /* ImageCarouselDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0446037237BF40B00799A4F /* ImageCarouselDelegate.swift */; };
 		F044603A237BFBC900799A4F /* SearchbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0446039237BFBC900799A4F /* SearchbarDelegate.swift */; };
+		F044603D237C550A00799A4F /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F044603C237C550A00799A4F /* SearchBarView.swift */; };
+		F044603F237C559400799A4F /* SearchBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F044603E237C559400799A4F /* SearchBarView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		F0446033237BF07500799A4F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		F0446037237BF40B00799A4F /* ImageCarouselDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarouselDelegate.swift; sourceTree = "<group>"; };
 		F0446039237BFBC900799A4F /* SearchbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchbarDelegate.swift; sourceTree = "<group>"; };
+		F044603C237C550A00799A4F /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		F044603E237C559400799A4F /* SearchBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 		F044600A237BD77E00799A4F /* ImageCarouselApp */ = {
 			isa = PBXGroup;
 			children = (
+				F044603B237C54FB00799A4F /* Views */,
 				F0446036237BF3F300799A4F /* Delegates */,
 				F0446035237BF3E300799A4F /* Extentions */,
 				F044602A237BE3E400799A4F /* Models */,
@@ -133,6 +138,15 @@
 				F0446039237BFBC900799A4F /* SearchbarDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		F044603B237C54FB00799A4F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F044603C237C550A00799A4F /* SearchBarView.swift */,
+				F044603E237C559400799A4F /* SearchBarView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F044603F237C559400799A4F /* SearchBarView.xib in Resources */,
 				F0446021237BD93700799A4F /* ImageViewCell.xib in Resources */,
 				F044602E237BE45200799A4F /* CarouselViewCell.xib in Resources */,
 				F0446029237BDEDA00799A4F /* ListItemViewCell.xib in Resources */,
@@ -211,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F044601F237BD92B00799A4F /* ImageViewCell.swift in Sources */,
+				F044603D237C550A00799A4F /* SearchBarView.swift in Sources */,
 				F0446023237BDE6900799A4F /* SearchBarCell.swift in Sources */,
 				F044602C237BE44000799A4F /* CarouselViewCell.swift in Sources */,
 				F044600E237BD77E00799A4F /* ImageListViewController.swift in Sources */,

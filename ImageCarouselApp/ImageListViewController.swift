@@ -30,6 +30,11 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
         self.collectionView.register(UINib(nibName: "ListItemViewCell", bundle: nil), forCellWithReuseIdentifier: "ListItemViewCell")
         self.collectionView.register(UINib(nibName: "SearchBarCell", bundle: nil), forCellWithReuseIdentifier: "SearchBarCell")
         
+        self.collectionView.register(UINib(nibName: "SearchBarView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchBarView")
+        
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.sectionHeadersPinToVisibleBounds = true
+        
         self.setData()
     }
     
@@ -100,6 +105,28 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
             
         } else {
             return CGSize(width: self.view.frame.width * 0.9, height: 250.0)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+            
+        case UICollectionView.elementKindSectionHeader:
+            let headerSearchView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchBarView", for: indexPath) as! SearchBarView
+            
+            headerSearchView.delegate = self
+            
+            return headerSearchView
+        default:
+            fatalError("This case is not handled")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 1 {
+            return CGSize(width: self.view.frame.width, height: 45.0)
+        } else {
+            return CGSize.zero
         }
     }
 
