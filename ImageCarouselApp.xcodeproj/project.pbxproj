@@ -8,20 +8,46 @@
 
 /* Begin PBXBuildFile section */
 		F044600C237BD77E00799A4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F044600B237BD77E00799A4F /* AppDelegate.swift */; };
-		F044600E237BD77E00799A4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F044600D237BD77E00799A4F /* ViewController.swift */; };
+		F044600E237BD77E00799A4F /* ImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F044600D237BD77E00799A4F /* ImageListViewController.swift */; };
 		F0446011237BD77E00799A4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F044600F237BD77E00799A4F /* Main.storyboard */; };
 		F0446013237BD77F00799A4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0446012237BD77F00799A4F /* Assets.xcassets */; };
 		F0446016237BD77F00799A4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0446014237BD77F00799A4F /* LaunchScreen.storyboard */; };
+		F044601F237BD92B00799A4F /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F044601E237BD92B00799A4F /* ImageViewCell.swift */; };
+		F0446021237BD93700799A4F /* ImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0446020237BD93700799A4F /* ImageViewCell.xib */; };
+		F0446023237BDE6900799A4F /* SearchBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0446022237BDE6900799A4F /* SearchBarCell.swift */; };
+		F0446025237BDE7800799A4F /* SearchBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0446024237BDE7800799A4F /* SearchBarCell.xib */; };
+		F0446027237BDED000799A4F /* ListItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0446026237BDED000799A4F /* ListItemViewCell.swift */; };
+		F0446029237BDEDA00799A4F /* ListItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0446028237BDEDA00799A4F /* ListItemViewCell.xib */; };
+		F044602C237BE44000799A4F /* CarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F044602B237BE44000799A4F /* CarouselViewCell.swift */; };
+		F044602E237BE45200799A4F /* CarouselViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F044602D237BE45200799A4F /* CarouselViewCell.xib */; };
+		F0446030237BE88800799A4F /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F044602F237BE88800799A4F /* ItemModel.swift */; };
+		F0446032237BE8DF00799A4F /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0446031237BE8DF00799A4F /* ImageModel.swift */; };
+		F0446034237BF07500799A4F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0446033237BF07500799A4F /* UIImageView.swift */; };
+		F0446038237BF40B00799A4F /* ImageCarouselDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0446037237BF40B00799A4F /* ImageCarouselDelegate.swift */; };
+		F044603A237BFBC900799A4F /* SearchbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0446039237BFBC900799A4F /* SearchbarDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F0446008237BD77E00799A4F /* ImageCarouselApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageCarouselApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F044600B237BD77E00799A4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F044600D237BD77E00799A4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F044600D237BD77E00799A4F /* ImageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewController.swift; sourceTree = "<group>"; };
 		F0446010237BD77E00799A4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0446012237BD77F00799A4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0446015237BD77F00799A4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0446017237BD77F00799A4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F044601E237BD92B00799A4F /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
+		F0446020237BD93700799A4F /* ImageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewCell.xib; sourceTree = "<group>"; };
+		F0446022237BDE6900799A4F /* SearchBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarCell.swift; sourceTree = "<group>"; };
+		F0446024237BDE7800799A4F /* SearchBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarCell.xib; sourceTree = "<group>"; };
+		F0446026237BDED000799A4F /* ListItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemViewCell.swift; sourceTree = "<group>"; };
+		F0446028237BDEDA00799A4F /* ListItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListItemViewCell.xib; sourceTree = "<group>"; };
+		F044602B237BE44000799A4F /* CarouselViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewCell.swift; sourceTree = "<group>"; };
+		F044602D237BE45200799A4F /* CarouselViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselViewCell.xib; sourceTree = "<group>"; };
+		F044602F237BE88800799A4F /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		F0446031237BE8DF00799A4F /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		F0446033237BF07500799A4F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		F0446037237BF40B00799A4F /* ImageCarouselDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarouselDelegate.swift; sourceTree = "<group>"; };
+		F0446039237BFBC900799A4F /* SearchbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchbarDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +80,59 @@
 		F044600A237BD77E00799A4F /* ImageCarouselApp */ = {
 			isa = PBXGroup;
 			children = (
+				F0446036237BF3F300799A4F /* Delegates */,
+				F0446035237BF3E300799A4F /* Extentions */,
+				F044602A237BE3E400799A4F /* Models */,
+				F044601D237BD8CF00799A4F /* Cells */,
 				F044600B237BD77E00799A4F /* AppDelegate.swift */,
-				F044600D237BD77E00799A4F /* ViewController.swift */,
+				F044600D237BD77E00799A4F /* ImageListViewController.swift */,
 				F044600F237BD77E00799A4F /* Main.storyboard */,
 				F0446012237BD77F00799A4F /* Assets.xcassets */,
 				F0446014237BD77F00799A4F /* LaunchScreen.storyboard */,
 				F0446017237BD77F00799A4F /* Info.plist */,
 			);
 			path = ImageCarouselApp;
+			sourceTree = "<group>";
+		};
+		F044601D237BD8CF00799A4F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F044601E237BD92B00799A4F /* ImageViewCell.swift */,
+				F0446020237BD93700799A4F /* ImageViewCell.xib */,
+				F0446022237BDE6900799A4F /* SearchBarCell.swift */,
+				F0446024237BDE7800799A4F /* SearchBarCell.xib */,
+				F0446026237BDED000799A4F /* ListItemViewCell.swift */,
+				F0446028237BDEDA00799A4F /* ListItemViewCell.xib */,
+				F044602B237BE44000799A4F /* CarouselViewCell.swift */,
+				F044602D237BE45200799A4F /* CarouselViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F044602A237BE3E400799A4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F044602F237BE88800799A4F /* ItemModel.swift */,
+				F0446031237BE8DF00799A4F /* ImageModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F0446035237BF3E300799A4F /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				F0446033237BF07500799A4F /* UIImageView.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		F0446036237BF3F300799A4F /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				F0446037237BF40B00799A4F /* ImageCarouselDelegate.swift */,
+				F0446039237BFBC900799A4F /* SearchbarDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,8 +193,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0446021237BD93700799A4F /* ImageViewCell.xib in Resources */,
+				F044602E237BE45200799A4F /* CarouselViewCell.xib in Resources */,
+				F0446029237BDEDA00799A4F /* ListItemViewCell.xib in Resources */,
 				F0446016237BD77F00799A4F /* LaunchScreen.storyboard in Resources */,
 				F0446013237BD77F00799A4F /* Assets.xcassets in Resources */,
+				F0446025237BDE7800799A4F /* SearchBarCell.xib in Resources */,
 				F0446011237BD77E00799A4F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,8 +210,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F044600E237BD77E00799A4F /* ViewController.swift in Sources */,
+				F044601F237BD92B00799A4F /* ImageViewCell.swift in Sources */,
+				F0446023237BDE6900799A4F /* SearchBarCell.swift in Sources */,
+				F044602C237BE44000799A4F /* CarouselViewCell.swift in Sources */,
+				F044600E237BD77E00799A4F /* ImageListViewController.swift in Sources */,
+				F044603A237BFBC900799A4F /* SearchbarDelegate.swift in Sources */,
+				F0446027237BDED000799A4F /* ListItemViewCell.swift in Sources */,
+				F0446030237BE88800799A4F /* ItemModel.swift in Sources */,
+				F0446038237BF40B00799A4F /* ImageCarouselDelegate.swift in Sources */,
 				F044600C237BD77E00799A4F /* AppDelegate.swift in Sources */,
+				F0446034237BF07500799A4F /* UIImageView.swift in Sources */,
+				F0446032237BE8DF00799A4F /* ImageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
