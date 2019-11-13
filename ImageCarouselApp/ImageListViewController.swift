@@ -35,7 +35,7 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView == self.collectionView {
-            return 1
+            return 2
         } else {
             return 1
         }
@@ -44,7 +44,12 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionView {
-            return data[currentImage].items.count + 2
+            if section == 0 {
+                return 1
+            } else {
+                return data[currentImage].items.count
+            }
+            
         } else {
             return data.count
         }
@@ -52,7 +57,7 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.collectionView {
-            if indexPath.row == 0 {
+            if indexPath.section == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselViewCell", for: indexPath) as! CarouselViewCell
                 
                 cell.collectionView.register(UINib(nibName: "ImageViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageViewCell")
@@ -64,14 +69,9 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
                 cell.collectionView.dataSource = self
                 cell.setup()
                 return cell
-            } else if indexPath.row == 1 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchBarCell", for: indexPath) as! SearchBarCell
-                cell.delegate = self
-                cell.setup()
-                return cell
             } else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListItemViewCell", for: indexPath) as! ListItemViewCell
-                let itemCount = indexPath.row - 2
+                let itemCount = indexPath.row
                 cell.itemModel = data[currentImage].items[itemCount]
                 cell.setup()
                 return cell
@@ -92,7 +92,7 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         if collectionView == self.collectionView {
-            if indexPath.row == 0 {
+            if indexPath.section == 0 {
                 return CGSize(width: self.view.frame.width, height: 250.0)
             } else {
                 return CGSize(width: self.view.frame.width, height: 45.0)
