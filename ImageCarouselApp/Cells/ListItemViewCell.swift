@@ -21,4 +21,9 @@ class ListItemViewCell: UICollectionViewCell {
             imageView.loadImage(fromUrl: itemModel.imageUrl)
         }
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.imageView.image = nil
+    }
 }

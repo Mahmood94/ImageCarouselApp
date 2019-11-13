@@ -14,10 +14,6 @@ class SearchBarView: UICollectionReusableView, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    override func prepareForReuse() {
-        return
-    }
-    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         self.delegate?.searchTextChanged(text: self.searchBar.text!)
     }

@@ -16,9 +16,11 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     var currentImage = 0
     var searchString = "" {
         didSet {
-            let oldData = self.data[currentImage].items
-            self.setData()
-            self.reloadData(onlyItems: true, oldData: oldData)
+            if !self.searchString.isEmpty {
+                let oldData = self.data[currentImage].items
+                self.setData()
+                self.reloadData(onlyItems: true, oldData: oldData)
+            }
         }
     }
     
@@ -136,11 +138,11 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     func setData() {
         
         var newData: [ImageModel] = []
-        var imageModel1 = ImageModel(imageUrl: "https://picsum.photos/500/700?random=1")
+        var imageModel1 = ImageModel(imageUrl: "https://picsum.photos/seed/image1/500/700")
         
         var items: [ItemModel] = []
         for i in 0...12 {
-            let itemModel = ItemModel(id: i, name: "Item \(i)", imageUrl: "https://picsum.photos/200/300?random=1")
+            let itemModel = ItemModel(id: i, name: "Item \(i)", imageUrl: "https://picsum.photos/seed/item\(i)/200/300")
             items.append(itemModel)
         }
         
@@ -154,11 +156,11 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
         
         newData.append(imageModel1)
         
-        var imageModel2 = ImageModel(imageUrl: "https://picsum.photos/200/300?random=1")
+        var imageModel2 = ImageModel(imageUrl: "https://picsum.photos/seed/image2/200/300")
         
         var items2: [ItemModel] = []
         for i in 0...3 {
-            let itemModel = ItemModel(id: i, name: "Item \(i)", imageUrl: "https://picsum.photos/200/300?random=1")
+            let itemModel = ItemModel(id: i, name: "Item \(i)", imageUrl: "https://picsum.photos/seed/item\(i)/200/300")
             items2.append(itemModel)
         }
         
@@ -178,9 +180,6 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     func imageChanged(index: Int) {
         if self.currentImage != index {
             self.currentImage = index
-            if self.searchString != "" {
-                self.searchString = ""
-            }
             self.reloadData()
         }
     }
