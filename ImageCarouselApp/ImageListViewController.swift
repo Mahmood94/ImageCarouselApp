@@ -25,14 +25,15 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Register the nibs we are going to use in the collection view
         self.collectionView.register(UINib(nibName: "ImageViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageViewCell")
         self.collectionView.register(UINib(nibName: "CarouselViewCell", bundle: nil), forCellWithReuseIdentifier: "CarouselViewCell")
         self.collectionView.register(UINib(nibName: "ListItemViewCell", bundle: nil), forCellWithReuseIdentifier: "ListItemViewCell")
         self.collectionView.register(UINib(nibName: "SearchBarCell", bundle: nil), forCellWithReuseIdentifier: "SearchBarCell")
         
-        self.collectionView.register(UINib(nibName: "SearchBarView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchBarView")
-
         // Attempt on sticky header
+//        self.collectionView.register(UINib(nibName: "SearchBarView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchBarView")
+        
 //        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
 //        layout?.sectionHeadersPinToVisibleBounds = true
         
@@ -41,8 +42,10 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView == self.collectionView {
+            // Parent collection view
             return 3
         } else {
+            // Nested collection view
             return 1
         }
         
@@ -51,10 +54,13 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionView {
             if section == 0 {
+                // Slider section
                 return 1
             } else if section == 1 {
+                // Search bar section
                 return 1
             } else {
+                // Items section
                 return data[currentImage].items.count
             }
             
@@ -141,6 +147,8 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
 
     
     func setData() {
+        // This is the data source
+        // Everytime this function is called, i am resetting the data set for better diffing
         
         var newData: [ImageModel] = []
         var imageModel1 = ImageModel(imageUrl: "https://picsum.photos/seed/image1/500/700")
@@ -183,6 +191,9 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func imageChanged(index: Int) {
+        // This is called when the slider image has been changed. Only update if the slider
+        // went to another slide.
+        
         if self.currentImage != index {
             self.currentImage = index
             self.reloadData()
@@ -205,6 +216,7 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func searchTextChanged(text: String) {
+        // This is called everytime the text in the search bar changes
         self.searchString = text
     }
     
