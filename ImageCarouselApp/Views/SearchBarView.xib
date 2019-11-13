@@ -31,7 +31,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="searchBar" destination="ucv-xL-Wl0" id="uwW-UC-o5o"/>
+                <outlet property="searchBar" destination="ucv-xL-Wl0" id="K2P-cL-viM"/>
             </connections>
         </view>
     </objects>

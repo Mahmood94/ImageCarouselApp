@@ -115,6 +115,7 @@ class ImageListViewController: UIViewController, UICollectionViewDelegate, UICol
             let headerSearchView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchBarView", for: indexPath) as! SearchBarView
             
             headerSearchView.delegate = self
+            headerSearchView.searchBar.delegate = headerSearchView
             
             return headerSearchView
         default:
